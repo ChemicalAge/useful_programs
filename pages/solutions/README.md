@@ -61,4 +61,4 @@ $$
 
 
 ## Obrazek
-![](pages/files/wykres.png)
+![Wykres](pages/files/wykres.png)
