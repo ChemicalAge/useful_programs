@@ -20,7 +20,7 @@ SF-26, also known by its internal name Project 678, is a Formula One car designe
 2. Water
 3. Earth
 
-##Cheeses that can be used for pizza
+## Cheeses that can be used for pizza
 
 - [x] Mozarella
 - [x] Gauda
@@ -43,7 +43,7 @@ a="Hallo"
 Print(a)
 ```
 
-##Wzory
+## Wzory
 
 $
 E=mc^2
@@ -53,7 +53,7 @@ $
 (a+b)^2=a^2+2ab+b^2
 $
 
-##Wzory 2
+## Wzory 2
 
 $$
 \sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}
