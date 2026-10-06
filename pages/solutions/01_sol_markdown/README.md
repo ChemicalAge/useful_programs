@@ -61,4 +61,4 @@ $$
 
 
 ## Obrazek
-![Wykres](pages/solutions/01_sol_markdown/wykres.png)
+![Wykres](wykres.png)
