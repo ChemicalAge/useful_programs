@@ -34,7 +34,7 @@ SF-26, also known by its internal name Project 678, is a Formula One car designe
 | Illumination | Yellow folks searching their master | 10/10 |
 
 
-## [Google Colab] (http://colab.research.google.com)
+## [Google Colab](http://colab.research.google.com)
 
 
 ## Krótki kod Phyton
