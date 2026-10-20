@@ -1,5 +1,7 @@
 # Transkrypcja
 
+Obrazek `zrzut.png` zatopiony w dokumencie.
+
 ## Napisz transkrypcję tego obrazka do kodu Markdown.
 
 ```
