@@ -1,3 +1,4 @@
+```python
 bohaterowie = [
     "Spider-Man",
     "Iron Man",
@@ -13,3 +14,4 @@ bohaterowie = [
 
 for numer, bohater in enumerate(bohaterowie, start=1):
     print(f"{numer}. {bohater}")
+```
