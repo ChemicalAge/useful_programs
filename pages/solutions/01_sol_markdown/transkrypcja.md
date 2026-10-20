@@ -1,4 +1,4 @@
-# Transcription
+# Transkrypcja
 
 ## Napisz transkrypcję tego obrazka do kodu Markdown.
 
