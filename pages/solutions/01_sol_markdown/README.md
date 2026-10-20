@@ -62,7 +62,7 @@ $$
 $$
 
 $$
-a^r*a^s=a^r+s
+a^r \cdot a^s = a^{r+s}
 $$
 
 
