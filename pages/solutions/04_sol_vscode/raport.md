@@ -245,7 +245,7 @@ Wartości dla oporu są wynikiem symulacji numerycznej i zależą od przyjętych
 
 ## 5. Wykresy ruchu
 
-Poniższe wykresy zostały wygenerowane lokalnie przez skrypt Python z dołączonego pliku źródłowego. Legenda każdego wykresu rozróżnia model idealny i numeryczne rozwiązanie z oporem kwadratowym. Współrzędne podano w metrach, czas w sekundach, prędkość w metrach na sekundę, a energię w dżulach.
+Poniższe wykresy zostały wygenerowane lokalnie przez skrypt Python z dołączonego pliku źródłowego. Niebieskie serie pokazują model bez oporu, a pomarańczowe lub fioletowe — rozwiązanie numeryczne z oporem kwadratowym. Współrzędne podano w metrach, czas w sekundach, prędkość w metrach na sekundę, a energię w dżulach.
 
 ![Porównanie toru rzutu bez oporu i z oporem kwadratowym](files/rzut_ukosny/tor_rzutu.svg)
 

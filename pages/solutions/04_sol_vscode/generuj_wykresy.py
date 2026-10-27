@@ -67,8 +67,9 @@ def ideal_state(time):
 
 
 def render_chart(filename, title, x_label, y_label, series, x_limits, y_limits):
-    width, height = 900, 500
-    left, right, top, bottom = 90, 30, 65, 85
+    has_wide_legend = len(series) > 3
+    width, height = (1100 if has_wide_legend else 900), 500
+    left, right, top, bottom = 90, (260 if has_wide_legend else 30), 65, 85
     plot_width, plot_height = width - left - right, height - top - bottom
     x_min, x_max = x_limits
     y_min, y_max = y_limits
@@ -124,6 +125,12 @@ def render_chart(filename, title, x_label, y_label, series, x_limits, y_limits):
         ]
     )
     for index, (label, values, color) in enumerate(series):
+        if any(
+            x < x_min - 1e-9 or x > x_max + 1e-9
+            or y < y_min - 1e-9 or y > y_max + 1e-9
+            for x, y in values
+        ):
+            raise ValueError(f"Data for {label!r} fall outside the chart axes.")
         coordinates = " ".join(
             f"{point(x, y)[0]:.1f},{point(x, y)[1]:.1f}" for x, y in values
         )
@@ -131,13 +138,14 @@ def render_chart(filename, title, x_label, y_label, series, x_limits, y_limits):
             f"<polyline points='{coordinates}' fill='none' "
             f"stroke='{color}' stroke-width='3'/>"
         )
+        legend_x = left + plot_width + 20 if has_wide_legend else left + 15
         legend_y = top + 18 + index * 23
         parts.extend(
             [
-                f"<line x1='{left + 15}' y1='{legend_y}' "
-                f"x2='{left + 40}' y2='{legend_y}' stroke='{color}' "
+                f"<line x1='{legend_x}' y1='{legend_y}' "
+                f"x2='{legend_x + 25}' y2='{legend_y}' stroke='{color}' "
                 "stroke-width='3'/>",
-                f"<text x='{left + 47}' y='{legend_y + 5}' "
+                f"<text x='{legend_x + 32}' y='{legend_y + 5}' "
                 f"font-size='13'>{escape(label)}</text>",
             ]
         )
@@ -184,19 +192,23 @@ def main():
         (0, ideal_flight_time),
         (0, ideal_height * 1.12),
     )
+    velocity_series = [
+        ("vx bez oporu", [(t, s[2]) for t, s in ideal], "#2463a6"),
+        ("vy bez oporu", [(t, s[3]) for t, s in ideal], "#168578"),
+        ("vx z oporem", [(t, s[2]) for t, s in drag], "#d47722"),
+        ("vy z oporem", [(t, s[3]) for t, s in drag], "#8455a4"),
+    ]
+    max_speed_component = max(
+        abs(value) for _, values, _ in velocity_series for _, value in values
+    )
     render_chart(
         "predkosc_czas.svg",
         "Składowe prędkości w czasie",
         "t [s]",
-        "predkosc [m/s]",
-        [
-            ("vx bez oporu", [(t, s[2]) for t, s in ideal], "#2463a6"),
-            ("vy bez oporu", [(t, s[3]) for t, s in ideal], "#168578"),
-            ("vx z oporem", [(t, s[2]) for t, s in drag], "#d47722"),
-            ("vy z oporem", [(t, s[3]) for t, s in drag], "#8455a4"),
-        ],
+        "prędkość [m/s]",
+        velocity_series,
         (0, ideal_flight_time),
-        (-V0 * 0.65, V0 * 0.65),
+        (-1.05 * max_speed_component, 1.05 * max_speed_component),
     )
     drag_energy = [
         (t, 0.5 * MASS * (s[2] ** 2 + s[3] ** 2) + MASS * G * s[1])
