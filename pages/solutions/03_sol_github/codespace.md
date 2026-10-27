@@ -1,17 +1,10 @@
-```python
-bohaterowie = [
-    "Spider-Man",
-    "Iron Man",
-    "Kapitan Ameryka",
-    "Thor",
-    "Hulk",
-    "Czarna Wdowa",
-    "Hawkeye",
-    "Czarna Pantera",
-    "Doktor Strange",
-    "Kapitan Marvel",
-]
-
-for numer, bohater in enumerate(bohaterowie, start=1):
-    print(f"{numer}. {bohater}")
-```
+1. Spider-Man
+2. Iron Man
+3. Kapitan Ameryka
+4. Thor
+5. Hulk
+6. Czarna Wdowa
+7. Hawkeye
+8. Czarna Pantera
+9. Doktor Strange
+10. Thanos
