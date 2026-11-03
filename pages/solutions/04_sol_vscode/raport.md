@@ -247,7 +247,7 @@ Wartości dla oporu są wynikiem symulacji numerycznej i zależą od przyjętych
 
 Poniższe wykresy zostały wygenerowane lokalnie przez skrypt Python z dołączonego pliku źródłowego. Niebieskie serie pokazują model bez oporu, a pomarańczowe lub fioletowe — rozwiązanie numeryczne z oporem kwadratowym. Współrzędne podano w metrach, czas w sekundach, prędkość w metrach na sekundę, a energię w dżulach.
 
-![Porównanie toru rzutu bez oporu i z oporem kwadratowym](files/rzut_ukosny/tor_rzutu.svg)
+![Porównanie toru rzutu bez oporu i z oporem kwadratowym](files/rzut_ukosny/tor_rzutu_rownoskala.svg)
 
 *Rysunek 1. Opór zmniejsza zasięg i wysokość, a tor przestaje być parabolą.*
 
@@ -330,7 +330,7 @@ Pliki SVG zostaną zapisane w `pages/solutions/04_sol_vscode/files/rzut_ukosny/`
 
 ## 7. Jak wykonać doświadczenie
 
-### 6.1. Procedura pomiarowa
+### 7.1. Procedura pomiarowa
 
 1. Wybierz niewielki, niezbyt lekki obiekt i ustal miejsce wyrzutu oraz poziom lądowania.
 2. Zmierz lub oszacuj masę obiektu. Zapisz jego kształt i wymiary, ponieważ wpływają na opór.
@@ -341,7 +341,7 @@ Pliki SVG zostaną zapisane w `pages/solutions/04_sol_vscode/files/rzut_ukosny/`
 
 Nie należy wykonywać doświadczenia w pobliżu ludzi, okien ani ruchu drogowego. Bezpieczeństwo i stabilny, niezakłócony kadr są ważniejsze niż zwiększanie prędkości wyrzutu.
 
-### 6.2. Ograniczenia pomiaru i modelu
+### 7.2. Ograniczenia pomiaru i modelu
 
 - Niepewność kąta i prędkości początkowej wpływa na przewidywany zasięg.
 - Perspektywa kamery i jej ruch mogą powodować błędne odczyty położenia.

@@ -66,13 +66,20 @@ def ideal_state(time):
     ]
 
 
-def render_chart(filename, title, x_label, y_label, series, x_limits, y_limits):
+def render_chart(filename, title, x_label, y_label, series, x_limits, y_limits, equal_aspect=False):
     has_wide_legend = len(series) > 3
     width, height = (1100 if has_wide_legend else 900), 500
     left, right, top, bottom = 90, (260 if has_wide_legend else 30), 65, 85
-    plot_width, plot_height = width - left - right, height - top - bottom
+    plot_width = width - left - right
     x_min, x_max = x_limits
     y_min, y_max = y_limits
+    plot_height = (
+        plot_width * (y_max - y_min) / (x_max - x_min)
+        if equal_aspect
+        else height - top - bottom
+    )
+    if equal_aspect:
+        height = round(top + plot_height + bottom)
 
     def point(x, y):
         px = left + (x - x_min) / (x_max - x_min) * plot_width
@@ -169,7 +176,7 @@ def main():
     ]
     ideal = [(t, ideal_state(t)) for t in ideal_times]
     render_chart(
-        "tor_rzutu.svg",
+        "tor_rzutu_rownoskala.svg",
         "Tor rzutu: porównanie modeli",
         "x [m]",
         "y [m]",
@@ -191,6 +198,7 @@ def main():
         ],
         (0, ideal_flight_time),
         (0, ideal_height * 1.12),
+        equal_aspect=True,
     )
     velocity_series = [
         ("vx bez oporu", [(t, s[2]) for t, s in ideal], "#2463a6"),
