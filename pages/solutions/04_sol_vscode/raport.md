@@ -6,7 +6,7 @@
 
 **Metoda:** rozwiązanie analityczne dla ruchu bez oporu oraz całkowanie numeryczne modelu z oporem kwadratowym.
 
-**Charakter danych:** przykład modelowy; wartości nie pochodzą z pomiaru laboratoryjnego. Cyfry $24$ i $37$ są fikcyjnymi wartościami demonstracyjnymi, użytymi na prośbę autora raportu — nie potwierdzają zgodności z rzeczywistym numerem indeksu.
+**Charakter danych:** przykład modelowy; parametry $v_0=37\,\mathrm{m/s}$ i $\alpha=82^\circ$ pochodzą z albumu. Wartości nie pochodzą z pomiaru laboratoryjnego.
 
 Rzut ukośny można rozłożyć na dwa prostsze ruchy: poziomy, w którym ciało bez oporu porusza się ze stałą prędkością, oraz pionowy, w którym działa przyspieszenie grawitacyjne. Po uwzględnieniu oporu powietrza składowe przestają być niezależne — siła oporu zależy od całej prędkości i zmienia się wraz z ruchem.
 
@@ -199,25 +199,25 @@ Jest to wynik dla spadania pionowego w dół, przy stałych parametrach oporu. N
 
 ## 4. Przykład liczbowy i porównanie
 
-Przyjmijmy fikcyjne cyfry indeksu: pierwsze dwie to $24$, a ostatnie dwie to $37$. Zgodnie z poleceniem przyjmujemy więc $v_0=24\,\mathrm{m/s}$ oraz $\alpha=37^\circ\approx0{,}6458\,\mathrm{rad}$. Stopnie podajemy dla czytelności, a w obliczeniach kąt zapisujemy w radianach — jednostce SI kąta płaskiego. Wartości te są wyłącznie przykładowe i należy je zastąpić cyframi z własnego indeksu, jeśli raport ma być zgodny z indywidualnym numerem.
+Przyjmujemy parametry z albumu: $v_0=37\,\mathrm{m/s}$ oraz $\alpha=82^\circ$. Do obliczeń kąt przeliczamy na radiany: $\alpha=82^\circ\cdot\frac{\pi}{180^\circ}\approx1{,}4312\,\mathrm{rad}$. Stopnie podajemy dla czytelności, a w funkcjach trygonometrycznych używamy kąta w radianach. Są to parametry modelowe, a nie wyniki pomiaru laboratoryjnego.
 
 Dla porównania z oporem wybieramy modelową piłkę o masie $m=0{,}145\,\mathrm{kg}$, polu czołowym $A=0{,}0042\,\mathrm{m^2}$ i współczynniku $C_D=0{,}47$. Przyjmujemy gęstość powietrza $\rho=1{,}225\,\mathrm{kg/m^3}$ oraz start i lądowanie na tym samym poziomie.
 
 ### 4.1. Wyniki modelu idealnego
 
 $$
-T=\frac{2(24)\sin(37\pi/180\,\mathrm{rad})}{9{,}81}
-\approx2{,}945\,\mathrm{s},
+T=\frac{2(37)\sin(82\pi/180)}{9{,}81}
+\approx7{,}470\,\mathrm{s},
 $$
 
 $$
-H=\frac{(24)^2\sin^2(37\pi/180\,\mathrm{rad})}{2(9{,}81)}
-\approx10{,}633\,\mathrm{m},
+H=\frac{(37)^2\sin^2(82\pi/180)}{2(9{,}81)}
+\approx68{,}424\,\mathrm{m},
 $$
 
 $$
-R=\frac{(24)^2\sin(2\cdot37\pi/180\,\mathrm{rad})}{9{,}81}
-\approx56{,}441\,\mathrm{m}.
+R=\frac{(37)^2\sin(2\cdot82\pi/180)}{9{,}81}
+\approx38{,}466\,\mathrm{m}.
 $$
 
 ### 4.2. Wyniki z oporem kwadratowym
@@ -233,13 +233,13 @@ Całkowanie równań ruchu daje w przybliżeniu:
 
 | Wielkość | Bez oporu | Z oporem kwadratowym |
 | :--- | ---: | ---: |
-| Czas lotu | $2{,}945\,\mathrm{s}$ | $2{,}719\,\mathrm{s}$ |
-| Maksymalna wysokość nad miejscem startu | $10{,}633\,\mathrm{m}$ | $9{,}095\,\mathrm{m}$ |
-| Zasięg | $56{,}441\,\mathrm{m}$ | $42{,}601\,\mathrm{m}$ |
-| Czas do wierzchołka | $1{,}472\,\mathrm{s}$ | $1{,}316\,\mathrm{s}$ |
-| Położenie wierzchołka w poziomie | $28{,}221\,\mathrm{m}$ | $22{,}611\,\mathrm{m}$ |
+| Czas lotu | $7{,}470\,\mathrm{s}$ | $6{,}092\,\mathrm{s}$ |
+| Maksymalna wysokość nad miejscem startu | $68{,}424\,\mathrm{m}$ | $45{,}418\,\mathrm{m}$ |
+| Zasięg | $38{,}466\,\mathrm{m}$ | $21{,}115\,\mathrm{m}$ |
+| Czas do wierzchołka | $3{,}735\,\mathrm{s}$ | $2{,}848\,\mathrm{s}$ |
+| Położenie wierzchołka w poziomie | $19{,}233\,\mathrm{m}$ | $11{,}329\,\mathrm{m}$ |
 
-Wartości dla oporu są wynikiem symulacji numerycznej i zależą od przyjętych parametrów oraz modelu. W tym przykładzie opór skraca zasięg o około $24{,}5\%$ względem wartości idealnej. Wyniki nie opisują każdej piłki ani warunków pogodowych — zmiana masy, powierzchni czołowej, współczynnika oporu lub wiatru zmieni rezultat.
+Wartości dla oporu są wynikiem symulacji numerycznej i zależą od przyjętych parametrów oraz modelu. W tym przykładzie opór skraca zasięg o około $45{,}1\%$ względem wartości idealnej. Wyniki nie opisują każdej piłki ani warunków pogodowych — zmiana masy, powierzchni czołowej, współczynnika oporu lub wiatru zmieni rezultat.
 
 ---
 
@@ -272,7 +272,7 @@ Pełny, uruchamialny skrypt generujący wszystkie cztery obrazy znajduje się w 
 ```python
 from math import cos, hypot, radians, sin
 
-G, V0, ALPHA_DEG = 9.81, 24.0, 37.0
+G, V0, ALPHA_DEG = 9.81, 37.0, 82.0
 ANGLE = radians(ALPHA_DEG)
 MASS, RHO, CD, AREA = 0.145, 1.225, 0.47, 0.0042
 DRAG_C = RHO * CD * AREA / (2 * MASS)
@@ -318,6 +318,155 @@ print(f"Czas lotu: {samples[-1][0]:.3f} s")
 
 Wektor stanu ma postać $(x,y,v_x,v_y)$. Skrypt wylicza cztery nachylenia na każdym kroku, a ich ważona średnia daje przybliżenie rozwiązania w następnym kroku. Krok czasu wynosi $0{,}002\,\mathrm{s}$. Punkt lądowania jest interpolowany między ostatnim punktem nad podłożem a pierwszym punktem poniżej $y=0$.
 
+Kod poniżej rysuje wykresy jako pliki SVG. Zakłada, że `ideal` i `drag` zawierają próbki obliczone przez powyższy algorytm, a `OUT` wskazuje katalog `files/rzut_ukosny/`. Funkcja pilnuje zakresów osi i zapisuje serie na wspólnych osiach, gdy porównujemy oba modele.
+
+```python
+from html import escape
+
+def render_chart(filename, title, x_label, y_label, series, x_limits, y_limits,
+                 equal_aspect=False):
+    has_wide_legend = len(series) > 3
+    width, height = (1100 if has_wide_legend else 900), 500
+    left, right, top, bottom = 90, (260 if has_wide_legend else 30), 65, 85
+    plot_width = width - left - right
+    x_min, x_max = x_limits
+    y_min, y_max = y_limits
+    plot_height = (
+        plot_width * (y_max - y_min) / (x_max - x_min)
+        if equal_aspect
+        else height - top - bottom
+    )
+    if equal_aspect:
+        height = round(top + plot_height + bottom)
+
+    def point(x, y):
+        px = left + (x - x_min) / (x_max - x_min) * plot_width
+        py = top + (y_max - y) / (y_max - y_min) * plot_height
+        return px, py
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" '
+        f'height="{height}" viewBox="0 0 {width} {height}">',
+        "<rect width='100%' height='100%' fill='white'/>",
+        "<style>text{font-family:Arial,sans-serif;fill:#233044}"
+        ".grid{stroke:#dbe2ea;stroke-width:1}"
+        ".axis{stroke:#526174;stroke-width:1.5}</style>",
+        f"<text x='{left}' y='35' font-size='22' font-weight='bold'>"
+        f"{escape(title)}</text>",
+    ]
+    for index in range(6):
+        x_value = x_min + (x_max - x_min) * index / 5
+        px, _ = point(x_value, y_min)
+        parts.append(
+            f"<line class='grid' x1='{px:.1f}' y1='{top}' "
+            f"x2='{px:.1f}' y2='{top + plot_height}'/>"
+        )
+        parts.append(
+            f"<text x='{px:.1f}' y='{top + plot_height + 24}' "
+            f"font-size='13' text-anchor='middle'>{x_value:.1f}</text>"
+        )
+        y_value = y_min + (y_max - y_min) * index / 5
+        _, py = point(x_min, y_value)
+        parts.append(
+            f"<line class='grid' x1='{left}' y1='{py:.1f}' "
+            f"x2='{left + plot_width}' y2='{py:.1f}'/>"
+        )
+        parts.append(
+            f"<text x='{left - 12}' y='{py + 4:.1f}' "
+            f"font-size='13' text-anchor='end'>{y_value:.1f}</text>"
+        )
+
+    parts.extend(
+        [
+            f"<line class='axis' x1='{left}' y1='{top + plot_height}' "
+            f"x2='{left + plot_width}' y2='{top + plot_height}'/>",
+            f"<line class='axis' x1='{left}' y1='{top}' "
+            f"x2='{left}' y2='{top + plot_height}'/>",
+            f"<text x='{left + plot_width / 2}' y='{height - 20}' "
+            f"font-size='16' text-anchor='middle'>{escape(x_label)}</text>",
+            f"<text x='22' y='{top + plot_height / 2}' font-size='16' "
+            f"text-anchor='middle' transform='rotate(-90 22 "
+            f"{top + plot_height / 2})'>{escape(y_label)}</text>",
+        ]
+    )
+    for index, (label, values, color) in enumerate(series):
+        if any(
+            x < x_min - 1e-9 or x > x_max + 1e-9
+            or y < y_min - 1e-9 or y > y_max + 1e-9
+            for x, y in values
+        ):
+            raise ValueError(f"Data for {label!r} fall outside the chart axes.")
+        coordinates = " ".join(
+            f"{point(x, y)[0]:.1f},{point(x, y)[1]:.1f}" for x, y in values
+        )
+        parts.append(
+            f"<polyline points='{coordinates}' fill='none' "
+            f"stroke='{color}' stroke-width='3'/>"
+        )
+        legend_x = left + plot_width + 20 if has_wide_legend else left + 15
+        legend_y = top + 18 + index * 23
+        parts.extend(
+            [
+                f"<line x1='{legend_x}' y1='{legend_y}' "
+                f"x2='{legend_x + 25}' y2='{legend_y}' stroke='{color}' "
+                "stroke-width='3'/>",
+                f"<text x='{legend_x + 32}' y='{legend_y + 5}' "
+                f"font-size='13'>{escape(label)}</text>",
+            ]
+        )
+    parts.append("</svg>")
+    (OUT / filename).write_text("\n".join(parts), encoding="utf-8")
+
+ideal_times = [
+    ideal_flight_time * i / (len(drag) - 1) for i in range(len(drag))
+]
+ideal = [(t, ideal_state(t)) for t in ideal_times]
+render_chart(
+    "tor_rzutu_rownoskala.svg", "Tor rzutu: porównanie modeli", "x [m]", "y [m]",
+    [
+        ("Bez oporu", [(s[0], s[1][1]) for s in ideal], "#2463a6"),
+        ("Opór kwadratowy", [(s[1][0], s[1][1]) for s in drag], "#d47722"),
+    ],
+    (0, max(ideal_range, drag_range) * 1.05), (0, ideal_height * 1.12),
+)
+render_chart(
+    "polozenie_czas.svg", "Wysokość w czasie", "t [s]", "wysokość y [m]",
+    [
+        ("y bez oporu", [(t, s[1]) for t, s in ideal], "#168578"),
+        ("y z oporem", [(t, s[1]) for t, s in drag], "#8455a4"),
+    ],
+    (0, ideal_flight_time), (0, ideal_height * 1.12),
+)
+velocity_series = [
+    ("vx bez oporu", [(t, s[2]) for t, s in ideal], "#2463a6"),
+    ("vy bez oporu", [(t, s[3]) for t, s in ideal], "#168578"),
+    ("vx z oporem", [(t, s[2]) for t, s in drag], "#d47722"),
+    ("vy z oporem", [(t, s[3]) for t, s in drag], "#8455a4"),
+]
+max_speed_component = max(
+    abs(value) for _, values, _ in velocity_series for _, value in values
+)
+render_chart(
+    "predkosc_czas.svg", "Składowe prędkości w czasie", "t [s]", "prędkość [m/s]",
+    velocity_series, (0, ideal_flight_time),
+    (-1.05 * max_speed_component, 1.05 * max_speed_component),
+)
+drag_energy = [
+    (t, 0.5 * MASS * (s[2] ** 2 + s[3] ** 2) + MASS * G * s[1])
+    for t, s in drag
+]
+ideal_energy = [
+    (t, 0.5 * MASS * (s[2] ** 2 + s[3] ** 2) + MASS * G * s[1])
+    for t, s in ideal
+]
+render_chart(
+    "energia_czas.svg", "Energia mechaniczna w czasie", "t [s]", "energia [J]",
+    [("Bez oporu", ideal_energy, "#2463a6"),
+     ("Opór kwadratowy", drag_energy, "#d47722")],
+    (0, ideal_flight_time), (0, max(value for _, value in ideal_energy) * 1.08),
+)
+```
+
 Aby ponownie obliczyć wyniki i wygenerować obrazy, uruchom z katalogu repozytorium:
 
 ```bash
@@ -358,7 +507,7 @@ Nie należy wykonywać doświadczenia w pobliżu ludzi, okien ani ruchu drogoweg
 2. Przy równych wysokościach startu i lądowania czas lotu, wysokość maksymalną i zasięg wyznaczają proste wzory. W modelu idealnym największy zasięg występuje dla kąta $\pi/4\,\mathrm{rad}$.
 3. Opór powietrza zmniejsza prędkość, zasięg i zwykle wysokość maksymalną. Ponieważ siła zależy od wektora prędkości, tor przestaje być parabolą.
 4. Dla oporu kwadratowego ruch oblicza się numerycznie. Wynik należy interpretować razem z przyjętymi parametrami i ograniczeniami modelu.
-5. Dla przykładowych parametrów zasięg zmniejszył się z około $56{,}441\,\mathrm{m}$ do $42{,}601\,\mathrm{m}$. Są to wyniki konkretnego modelu, a nie wartości uniwersalne.
+5. Dla parametrów z albumu zasięg zmniejszył się z około $38{,}466\,\mathrm{m}$ do $21{,}115\,\mathrm{m}$. Są to wyniki konkretnego modelu, a nie wartości uniwersalne.
 
 ---
 

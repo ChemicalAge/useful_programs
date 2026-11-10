@@ -8,8 +8,8 @@ OUT = Path(__file__).parent / "files" / "rzut_ukosny"
 OUT.mkdir(parents=True, exist_ok=True)
 
 G = 9.81
-V0 = 24.0
-ALPHA_DEG = 37.0
+V0 = 37.0
+ALPHA_DEG = 82.0
 MASS = 0.145
 RHO = 1.225
 CD = 0.47
@@ -198,7 +198,6 @@ def main():
         ],
         (0, ideal_flight_time),
         (0, ideal_height * 1.12),
-        equal_aspect=True,
     )
     velocity_series = [
         ("vx bez oporu", [(t, s[2]) for t, s in ideal], "#2463a6"),
